@@ -3,7 +3,11 @@
 #include "interface.h"
 #include "board.h"
 
-Interface::Interface(Board* board) { this->board = board; }
+Interface::Interface(TicTacToe* game)
+{ 
+	this->board = &game->board;
+	this->engine = &game->engine;
+}
 
 void Interface::display_board(Board board) const
 {
