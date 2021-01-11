@@ -15,10 +15,13 @@ TicTacToe::TicTacToe(int size)
 void TicTacToe::start()
 {
 	UI.display_board();
-	while (!engine.is_tie() && !engine.check_win(static_cast<PlayerType>(engine.get_turn())))
+	PlayerType player = PlayerType::HUMAN;
+	bool win{ false };
+
+	while (!win)
 	{
 		Move move;
-		if (engine.get_turn() % 2)
+		if (player == PlayerType::HUMAN)
 		{
 			
 			UI.make_move();
@@ -30,9 +33,10 @@ void TicTacToe::start()
 			UI.display_board();
 			
 		}
-
+		win = engine.check_win(player) || engine.is_tie();
 		
 		engine.next_turn();
+		player = static_cast<PlayerType>((int)player * -1);
 	}
 	std::cout << "game ova";
 }

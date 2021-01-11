@@ -13,6 +13,7 @@ class MiniMax
 
 		int min_search();
 		int max_search();
+		int evaluate_board();
 	public:
 		MiniMax() {};
 		MiniMax(Board* board, Engine* engine);

@@ -14,9 +14,9 @@ class Engine
 		int get_player();
 
 		// checks
-		bool horizontal_check();
-		bool vertical_check();
-		bool diagonal_check();
+		bool horizontal_check(PlayerType player);
+		bool vertical_check(PlayerType player);
+		bool diagonal_check(PlayerType player);
 	public:
 		Engine() {};
 		Engine(Board* board);

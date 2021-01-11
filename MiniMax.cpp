@@ -34,10 +34,14 @@ Move MiniMax::get_move()
 }
 int MiniMax::min_search()
 {
-	int score = std::numeric_limits<int>::min();
-	if (this->engine->check_win(PlayerType::COMPUTER)) return 10;
-	else if (this->engine->check_win(PlayerType::HUMAN)) return -10;
+	int score = std::numeric_limits<int>::min(), board_value;
+	if ((board_value = evaluate_board()) < 0) return board_value;
+
+	/*
+	if (this->engine->check_win(PlayerType::COMPUTER)) return -10;
+	else if (this->engine->check_win(PlayerType::HUMAN)) return 10;
 	else if (this->engine->is_tie()) return 0;
+	*/
 
 	for (int row = 0; row < this->board->getSize(); row++)
 	{
@@ -56,10 +60,14 @@ int MiniMax::min_search()
 }
 int MiniMax::max_search()
 {
-	int score = std::numeric_limits<int>::max();
-	if (this->engine->check_win(PlayerType::COMPUTER)) return 10;
-	else if (this->engine->check_win(PlayerType::HUMAN)) return -10;
+	int score = std::numeric_limits<int>::max(), board_value;
+	if ((board_value = evaluate_board()) > 0) return board_value;
+
+	/*
+	if (this->engine->check_win(PlayerType::COMPUTER)) return -10;
+	else if (this->engine->check_win(PlayerType::HUMAN)) return 10;
 	else if (this->engine->is_tie()) return 0;
+	*/
 
 	for (int row = 0; row < this->board->getSize(); row++)
 	{
@@ -76,6 +84,13 @@ int MiniMax::max_search()
 	}
 	return score;
 
+}
+int MiniMax::evaluate_board()
+{
+	if (this->engine->check_win(PlayerType::COMPUTER)) return 10;
+	else if (this->engine->check_win(PlayerType::HUMAN)) return -10;
+	else if (this->engine->is_tie()) return 0;
+	else return -1;
 }
 MiniMax::MiniMax(Board* board, Engine* engine)
 {

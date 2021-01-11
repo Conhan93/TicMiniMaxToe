@@ -26,13 +26,13 @@ bool Engine::make_move(int row, int col)
 bool Engine::check_win(PlayerType player)
 {
 	this->player = player;
-	return horizontal_check() || vertical_check() || diagonal_check();
+	return horizontal_check(player) || vertical_check(player) || diagonal_check(player);
 }
 int Engine::get_player()
 {
 	return this->turn % 2 ? 1 : -1;
 }
-bool Engine::horizontal_check()
+bool Engine::horizontal_check(PlayerType player)
 {
 	bool check{ true };
 	// horizontal check
@@ -40,13 +40,14 @@ bool Engine::horizontal_check()
 	{
 		for (auto col{ 0 }; col < this->board->getSize(); col++)
 		{
-			check &= board->getTile(row, col) == (int)this->player;
+			check &= (board->getTile(row, col) == (int)player);
 		}
 		if (check) return true;
+		else check = false;
 	}
 	return check;
 }
-bool Engine::vertical_check()
+bool Engine::vertical_check(PlayerType player)
 {
 	// vertical check
 	bool check{ true };
@@ -55,20 +56,22 @@ bool Engine::vertical_check()
 	{
 		for (auto row{ 0 }; row < this->board->getSize(); row++)
 		{
-			check &= board->getTile(row, col) == (int)this->player;
+			check &= board->getTile(row, col) == (int)player;
 		}
 		if (check) return true;
+		else check = false;
 	}
 	return check;
 }
-bool Engine::diagonal_check()
+bool Engine::diagonal_check(PlayerType player)
 {
 	// diag check
 	bool check{ true };
 
 	for (auto row{ 0 }; row < this->board->getSize(); row++)
 	{
-		check &= this->board->getTile(row, row) == (int)this->player;
+		check &= this->board->getTile(row, row) == (int)player;
+
 	}
 	return check;
 }
