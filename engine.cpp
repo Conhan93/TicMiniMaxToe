@@ -43,9 +43,9 @@ bool Engine::horizontal_check(PlayerType player)
 			check &= (board->getTile(row, col) == (int)player);
 		}
 		if (check) return true;
-		else check = false;
+		check = true;
 	}
-	return check;
+	return false;
 }
 bool Engine::vertical_check(PlayerType player)
 {
@@ -59,9 +59,9 @@ bool Engine::vertical_check(PlayerType player)
 			check &= board->getTile(row, col) == (int)player;
 		}
 		if (check) return true;
-		else check = false;
+		check = true;
 	}
-	return check;
+	return false;
 }
 bool Engine::diagonal_check(PlayerType player)
 {
