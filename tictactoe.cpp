@@ -27,10 +27,11 @@ void TicTacToe::start()
 		{
 			move = AI.get_move();
 			engine.make_move(move.row, move.col);
+			UI.display_board();
 			
 		}
 
-		UI.display_board();
+		
 		engine.next_turn();
 	}
 	std::cout << "game ova";

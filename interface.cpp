@@ -38,8 +38,10 @@ void Interface::display_board() const
 bool Interface::make_move()
 {
 	int row, col;
-	std::cout << "Enter row, col";
-	std::cin >> row >> col;
+	std::cout << "\nEnter row:";
+	std::cin >> row;
+	std::cout << "\nEnter col:";
+	std::cin >> col;
 
 	if (!board->getTile(row, col))
 	{
