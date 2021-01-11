@@ -1,5 +1,9 @@
+#ifndef INTERFACE_INCLUDED
+#define INTERFACE_INCLUDED
+
 #include "board.h"
-#include "tictactoe.h"
+#include "engine.h"
+
 
 
 class Interface
@@ -9,7 +13,10 @@ class Interface
 		Engine* engine;
 	public:
 		Interface() {};
-		Interface(TicTacToe* game);
-		void display_board(Board board) const;
-		bool make_move(int turn);
+		Interface(Board* board, Engine* engine);
+
+		void display_board() const;
+		bool make_move();
 };
+
+#endif

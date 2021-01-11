@@ -3,21 +3,21 @@
 #include "interface.h"
 #include "board.h"
 
-Interface::Interface(TicTacToe* game)
+Interface::Interface(Board* board, Engine* engine)
 { 
-	this->board = &game->board;
-	this->engine = &game->engine;
+	this->board = board;
+	this->engine = engine;
 }
 
-void Interface::display_board(Board board) const
+void Interface::display_board() const
 {
-	for (auto row = 0; row < board.getSize(); row++)
+	for (auto row = 0; row < this->board->getSize(); row++)
 	{
-		for (auto col = 0; col < board.getSize(); col++)
+		for (auto col = 0; col < this->board->getSize(); col++)
 		{
-			if (!(col % board.getSize()))
+			if (!(col % this->board->getSize()))
 				std::cout << "|" << std::endl;
-			std::cout << "|" << board.getTile(row, col);
+			std::cout << "|" << this->board->getTile(row, col);
 		}
 			
 	}
@@ -35,7 +35,7 @@ void Interface::display_board(Board board) const
 			std::cout << col << "|";
 	*/
 }
-bool Interface::make_move(int turn)
+bool Interface::make_move()
 {
 	int row, col;
 	std::cout << "Enter row, col";
@@ -43,7 +43,7 @@ bool Interface::make_move(int turn)
 
 	if (!board->getTile(row, col))
 	{
-		board->setTile(row, col, (turn % 2 ? 1 : -1));
+		board->setTile(row, col, this->engine->get_turn() % 2 ? 1 : -1);
 		return true;
 	}
 	

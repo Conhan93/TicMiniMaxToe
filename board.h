@@ -1,4 +1,5 @@
-#pragma once
+#ifndef BOARD_INCLUDED
+#define BOARD_INCLUDED
 
 #include <vector>
 
@@ -15,4 +16,6 @@ class Board
 		void setTile(int row, int col, int value);
 
 };
+
+#endif
 
