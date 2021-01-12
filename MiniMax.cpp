@@ -15,9 +15,9 @@ Move MiniMax::get_move()
 	{
 		for (int col = 0; col < this->board_size; col++)
 		{
-			if (this->board->getTile(row, col) == (int)PlayerType::EMPTY)
+			if (this->board->getTile(row, col) == PlayerType::EMPTY)
 			{
-				this->board->setTile(row, col, (int)PlayerType::COMPUTER);
+				this->board->setTile(row, col, PlayerType::COMPUTER);
 				if ((temp_score = max_search()) > score)
 				{
 					score = temp_score;
@@ -25,7 +25,7 @@ Move MiniMax::get_move()
 					move.col = col;
 
 				}
-				this->board->setTile(row, col, (int)PlayerType::EMPTY);
+				this->board->setTile(row, col, PlayerType::EMPTY);
 				
 			}
 		}
@@ -42,11 +42,11 @@ int MiniMax::min_search()
 	{
 		for (int col = 0; col < this->board_size; col++)
 		{
-			if (this->board->getTile(row, col) == (int)PlayerType::EMPTY)
+			if (this->board->getTile(row, col) == PlayerType::EMPTY)
 			{
-				this->board->setTile(row, col, (int)PlayerType::COMPUTER);
+				this->board->setTile(row, col, PlayerType::COMPUTER);
 				score = std::max(score, max_search());
-				this->board->setTile(row, col, (int)PlayerType::EMPTY);
+				this->board->setTile(row, col, PlayerType::EMPTY);
 
 			}
 		}
@@ -62,11 +62,11 @@ int MiniMax::max_search()
 	{
 		for (int col = 0; col < this->board_size; col++)
 		{
-			if (this->board->getTile(row, col) == (int)PlayerType::EMPTY)
+			if (this->board->getTile(row, col) == PlayerType::EMPTY)
 			{
-				this->board->setTile(row, col, (int)PlayerType::HUMAN);
+				this->board->setTile(row, col, PlayerType::HUMAN);
 				score = std::min(score, min_search());
-				this->board->setTile(row, col, (int)PlayerType::EMPTY);
+				this->board->setTile(row, col, PlayerType::EMPTY);
 
 			}
 		}

@@ -12,7 +12,7 @@ class Engine
 		int turn;
 		PlayerType player;
 
-		int get_player();
+		
 
 		// checks
 		bool horizontal_check(PlayerType player);
@@ -22,6 +22,7 @@ class Engine
 	public:
 		Engine() {};
 		Engine(Board* board);
+		PlayerType get_player();
 
 		void next_turn();
 		bool make_move(int row, int col);

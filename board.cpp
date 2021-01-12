@@ -12,11 +12,11 @@ Board::Board(size_t size)
 
 }
 size_t Board::getSize() { return this -> board.size(); }
-int& Board::getTile(int row, int col)
+PlayerType Board::getTile(int row, int col)
 {
 	return this->board[row][col];
 }
-void Board::setTile(int row, int col, int value)
+void Board::setTile(int row, int col, PlayerType value)
 {
 	this->board[row][col] = value;
 }

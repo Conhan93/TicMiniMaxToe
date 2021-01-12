@@ -2,18 +2,19 @@
 #define BOARD_INCLUDED
 
 #include <vector>
+#include "players.h"
 
 
 class Board
 {
 	private:
-		std::vector<std::vector<int>> board;
+		std::vector<std::vector<PlayerType>> board;
 	public:
 		Board() {};
 		Board(size_t size);
 		size_t getSize();
-		int& getTile(int row, int col);
-		void setTile(int row, int col, int value);
+		PlayerType getTile(int row, int col);
+		void setTile(int row, int col, PlayerType value);
 
 };
 

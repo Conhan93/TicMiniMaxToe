@@ -5,10 +5,12 @@ Engine::Engine(Board* board)
 {
 	this->board = board;
 	this->turn = 1;
+	this->player = PlayerType::HUMAN;
 }
 void Engine::next_turn()
 {
 	this->turn++;
+	this->player = static_cast<PlayerType>((int)player * -1);
 }
 int Engine::get_turn()
 {
@@ -25,16 +27,17 @@ bool Engine::make_move(int row, int col)
 }
 bool Engine::valid_move(int row, int col)
 {
-	return this->board->getTile(row, col) == (int)PlayerType::EMPTY;
+	return this->board->getTile(row, col) == PlayerType::EMPTY;
 }
 bool Engine::check_win(PlayerType player)
 {
-	this->player = player;
+	//this->player = player;
 	return horizontal_check(player) || vertical_check(player) || diagonal_check(player);
 }
-int Engine::get_player()
+PlayerType Engine::get_player()
 {
-	return this->turn % 2 ? 1 : -1;
+	return this->player;
+	//return this->turn % 2 ? 1 : -1;
 }
 bool Engine::horizontal_check(PlayerType player)
 {
@@ -44,7 +47,7 @@ bool Engine::horizontal_check(PlayerType player)
 	{
 		for (auto col{ 0 }; col < this->board->getSize(); col++)
 		{
-			check &= (board->getTile(row, col) == (int)player);
+			check &= (board->getTile(row, col) == player);
 		}
 		if (check) return true;
 		check = true;
@@ -60,7 +63,7 @@ bool Engine::vertical_check(PlayerType player)
 	{
 		for (auto row{ 0 }; row < this->board->getSize(); row++)
 		{
-			check &= board->getTile(row, col) == (int)player;
+			check &= board->getTile(row, col) == player;
 		}
 		if (check) return true;
 		check = true;
@@ -74,14 +77,14 @@ bool Engine::diagonal_check(PlayerType player)
 
 	for (auto row{ 0 }; row < this->board->getSize(); row++)
 	{
-		check &= this->board->getTile(row, row) == (int)player;
+		check &= this->board->getTile(row, row) == player;
 
 	}
 	if (check) return true;
 	check = true;
 	for (auto col{ 0 }; col < this->board->getSize(); col++)
 	{
-		check &= this->board->getTile(this->board->getSize() - (col + 1), col) == (int)player;
+		check &= this->board->getTile(this->board->getSize() - (col + 1), col) == player;
 
 	}
 	if (check) return true;
@@ -95,7 +98,7 @@ bool Engine::is_tie()
 
 	for (auto row{ 0 }; row < this->board->getSize(); row++)
 		for (auto col{ 0 }; col < this->board->getSize(); col++)
-			if (this->board->getTile(row, col) == (int)PlayerType::EMPTY)
+			if (this->board->getTile(row, col) == PlayerType::EMPTY)
 				tie = false;
 
 	return tie;

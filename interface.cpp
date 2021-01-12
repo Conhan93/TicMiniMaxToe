@@ -17,7 +17,7 @@ void Interface::display_board() const
 		{
 			if (!(col % this->board->getSize()))
 				std::cout << "|" << std::endl;
-			std::cout << "|" << this->board->getTile(row, col);
+			std::cout << "|" << (int)this->board->getTile(row, col);
 		}
 			
 	}
@@ -43,9 +43,9 @@ bool Interface::make_move()
 	std::cout << "\nEnter col:";
 	std::cin >> col;
 
-	if (!board->getTile(row, col))
+	if (!(int)board->getTile(row, col))
 	{
-		board->setTile(row, col, this->engine->get_turn() % 2 ? 1 : -1);
+		board->setTile(row, col, this->engine->get_player());
 		return true;
 	}
 	
