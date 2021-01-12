@@ -11,9 +11,9 @@ Move MiniMax::get_move()
 	int score = std::numeric_limits<int>::min(), temp_score;
 	Move move;
 
-	for (int row = 0; row < this->board->getSize(); row++)
+	for (int row = 0; row < this->board_size; row++)
 	{
-		for (int col = 0; col < this->board->getSize(); col++)
+		for (int col = 0; col < this->board_size; col++)
 		{
 			if (this->board->getTile(row, col) == (int)PlayerType::EMPTY)
 			{
@@ -35,17 +35,12 @@ Move MiniMax::get_move()
 int MiniMax::min_search()
 {
 	int score = std::numeric_limits<int>::min(), board_value;
-	if ((board_value = evaluate_board()) < 0) return board_value;
+	if ((board_value = evaluate_board()) != GAME_NOT_FINISHED) return board_value; // error
 
-	/*
-	if (this->engine->check_win(PlayerType::COMPUTER)) return -10;
-	else if (this->engine->check_win(PlayerType::HUMAN)) return 10;
-	else if (this->engine->is_tie()) return 0;
-	*/
 
-	for (int row = 0; row < this->board->getSize(); row++)
+	for (int row = 0; row < this->board_size; row++)
 	{
-		for (int col = 0; col < this->board->getSize(); col++)
+		for (int col = 0; col < this->board_size; col++)
 		{
 			if (this->board->getTile(row, col) == (int)PlayerType::EMPTY)
 			{
@@ -61,17 +56,11 @@ int MiniMax::min_search()
 int MiniMax::max_search()
 {
 	int score = std::numeric_limits<int>::max(), board_value;
-	if ((board_value = evaluate_board()) > 0) return board_value;
+	if ((board_value = evaluate_board())  != GAME_NOT_FINISHED) return board_value;
 
-	/*
-	if (this->engine->check_win(PlayerType::COMPUTER)) return -10;
-	else if (this->engine->check_win(PlayerType::HUMAN)) return 10;
-	else if (this->engine->is_tie()) return 0;
-	*/
-
-	for (int row = 0; row < this->board->getSize(); row++)
+	for (int row = 0; row < this->board_size; row++)
 	{
-		for (int col = 0; col < this->board->getSize(); col++)
+		for (int col = 0; col < this->board_size; col++)
 		{
 			if (this->board->getTile(row, col) == (int)PlayerType::EMPTY)
 			{
@@ -87,13 +76,14 @@ int MiniMax::max_search()
 }
 int MiniMax::evaluate_board()
 {
-	if (this->engine->check_win(PlayerType::COMPUTER)) return 10;
-	else if (this->engine->check_win(PlayerType::HUMAN)) return -10;
-	else if (this->engine->is_tie()) return 0;
-	else return -1;
+	if (this->engine->check_win(PlayerType::COMPUTER)) return COMPUTER_WIN;
+	else if (this->engine->check_win(PlayerType::HUMAN)) return HUMAN_WIN;
+	else if (this->engine->is_tie()) return TIE;
+	else return GAME_NOT_FINISHED;
 }
 MiniMax::MiniMax(Board* board, Engine* engine)
 {
 	this->board = board;
 	this->engine = engine;
+	this->board_size = board->getSize();
 }

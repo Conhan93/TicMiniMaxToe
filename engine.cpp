@@ -16,12 +16,16 @@ int Engine::get_turn()
 }
 bool Engine::make_move(int row, int col)
 {
-	if (!this->board->getTile(row, col))
+	if (valid_move(row, col))
 	{
 		this->board->setTile(row, col, get_player());
 		return true;
 	}
 	return false;
+}
+bool Engine::valid_move(int row, int col)
+{
+	return this->board->getTile(row, col) == (int)PlayerType::EMPTY;
 }
 bool Engine::check_win(PlayerType player)
 {
@@ -90,11 +94,9 @@ bool Engine::is_tie()
 	bool tie{ true };
 
 	for (auto row{ 0 }; row < this->board->getSize(); row++)
-	{
 		for (auto col{ 0 }; col < this->board->getSize(); col++)
 			if (this->board->getTile(row, col) == (int)PlayerType::EMPTY)
 				tie = false;
-	}
 
 	return tie;
 }

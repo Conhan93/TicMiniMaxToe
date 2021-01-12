@@ -3,6 +3,7 @@
 
 #include "board.h"
 #include "players.h"
+#include "move.h"
 
 class Engine
 {
@@ -17,6 +18,7 @@ class Engine
 		bool horizontal_check(PlayerType player);
 		bool vertical_check(PlayerType player);
 		bool diagonal_check(PlayerType player);
+		bool valid_move(int row, int col);
 	public:
 		Engine() {};
 		Engine(Board* board);
