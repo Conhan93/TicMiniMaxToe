@@ -73,7 +73,16 @@ bool Engine::diagonal_check(PlayerType player)
 		check &= this->board->getTile(row, row) == (int)player;
 
 	}
-	return check;
+	if (check) return true;
+	check = true;
+	for (auto col{ 0 }; col < this->board->getSize(); col++)
+	{
+		check &= this->board->getTile(this->board->getSize() - (col + 1), col) == (int)player;
+
+	}
+	if (check) return true;
+
+	return false;
 }
 
 bool Engine::is_tie()
