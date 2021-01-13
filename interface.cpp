@@ -1,4 +1,5 @@
-#include "iostream"
+#include <iostream>
+#include <iomanip>
 #include "algorithm"
 #include "interface.h"
 #include "board.h"
@@ -11,29 +12,20 @@ Interface::Interface(Board* board, Engine* engine)
 
 void Interface::display_board() const
 {
+	std::cout << std::right << std::setw(2) << std::endl;
 	for (auto row = 0; row < this->board->getSize(); row++)
 	{
+		std::cout << "  ";
 		for (auto col = 0; col < this->board->getSize(); col++)
 		{
-			if (!(col % this->board->getSize()))
-				std::cout << "|" << std::endl;
+			//if (!(col % this->board->getSize()))
+				//std::cout << std::endl;
 			std::cout << "|" << (int)this->board->getTile(row, col);
 		}
+		std::cout << "|" << std::endl;
 			
 	}
-		
-
-	/*
-	auto print_row = [](std::vector<int> row) {
-		for (auto col : row)
-			std::cout << col << "|"; };
-
-	std::for_each(board.begin(), board.end(), print_row);
-	
-	for (auto row : board)
-		for (auto col : row)
-			std::cout << col << "|";
-	*/
+	std::cout << std::endl << std::endl;
 }
 bool Interface::make_move()
 {

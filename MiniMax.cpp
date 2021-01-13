@@ -6,6 +6,7 @@
 
 
 
+
 Move MiniMax::get_move()
 {
 	int score = std::numeric_limits<int>::min(), temp_score;
