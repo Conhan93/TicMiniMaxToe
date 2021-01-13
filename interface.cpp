@@ -18,14 +18,14 @@ void Interface::display_board() const
 		std::cout << "  ";
 		for (auto col = 0; col < this->board->getSize(); col++)
 		{
-			std::cout << "|" << display_tile(row, col);
+			std::cout << "|" << format_tile(row, col);
 		}
 		std::cout << "|" << std::endl;
 			
 	}
 	std::cout << std::endl << std::endl;
 }
-char Interface::display_tile(int row, int col) const
+char Interface::format_tile(int row, int col) const
 {
 	PlayerType tile = this->board->getTile(row, col);
 	switch (tile)
@@ -43,16 +43,15 @@ char Interface::display_tile(int row, int col) const
 bool Interface::make_move()
 {
 	int row, col;
-	std::cout << "\nEnter row:";
-	std::cin >> row;
-	std::cout << "\nEnter col:";
-	std::cin >> col;
-
-	if (!(int)board->getTile(row, col))
+	while(true)
 	{
-		board->setTile(row, col, this->engine->get_player());
-		return true;
+		std::cout << "\nEnter row:";
+		std::cin >> row;
+		std::cout << "\nEnter col:";
+		std::cin >> col;
+
+		if (engine->make_move(row, col)) return true;
+		else std::cout << std::endl << "Tile occupied!" << std::endl;
+
 	}
-	
-	return false;
 }
