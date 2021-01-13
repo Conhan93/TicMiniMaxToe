@@ -1,9 +1,9 @@
 #ifndef ENGINE_INCLUDED
 #define ENGINE_INCLUDED
 
-#include "board.h"
-#include "players.h"
-#include "move.h"
+#include "..\board\board.h"
+#include "..\utils\players.h"
+#include "..\utils\move.h"
 
 class Engine
 {

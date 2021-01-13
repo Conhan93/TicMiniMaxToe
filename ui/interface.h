@@ -1,8 +1,8 @@
 #ifndef INTERFACE_INCLUDED
 #define INTERFACE_INCLUDED
 
-#include "board.h"
-#include "engine.h"
+#include "..\board\board.h"
+#include "..\engine\engine.h"
 
 
 

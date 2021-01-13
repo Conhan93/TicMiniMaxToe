@@ -1,5 +1,4 @@
 #include "engine.h"
-#include <algorithm>
 
 Engine::Engine(Board* board)
 {

@@ -2,7 +2,7 @@
 #define BOARD_INCLUDED
 
 #include <vector>
-#include "players.h"
+#include "..\utils\players.h"
 
 
 class Board
@@ -19,4 +19,3 @@ class Board
 };
 
 #endif
-

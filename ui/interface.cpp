@@ -1,11 +1,10 @@
 #include <iostream>
 #include <iomanip>
-#include "algorithm"
 #include "interface.h"
-#include "board.h"
+#include "..\board\board.h"
 
 Interface::Interface(Board* board, Engine* engine)
-{ 
+{
 	this->board = board;
 	this->engine = engine;
 }
@@ -21,7 +20,7 @@ void Interface::display_board() const
 			std::cout << "|" << format_tile(row, col);
 		}
 		std::cout << "|" << std::endl;
-			
+
 	}
 	std::cout << std::endl << std::endl;
 }

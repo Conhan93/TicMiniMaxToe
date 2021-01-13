@@ -1,16 +1,16 @@
 #ifndef GAME_INCLUDED
 #define GAME_INCLUDED
-#include "board.h"
-#include "interface.h"
-#include "engine.h"
-#include "MiniMax.h"
+#include "board\board.h"
+#include "ui\interface.h"
+#include "engine\engine.h"
+#include "AI\MiniMax.h"
 
 class TicTacToe
 {
-	
+
 	private:
-		
-		
+
+
 	public:
 		MiniMax AI;
 		Board board;
@@ -22,4 +22,3 @@ class TicTacToe
 };
 
 #endif
-

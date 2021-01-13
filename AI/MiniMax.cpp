@@ -1,6 +1,7 @@
 #include "MiniMax.h"
-#include "players.h"
+#include "..\utils\players.h"
 #include <numeric>
+#include <limits>
 
 
 
@@ -27,7 +28,7 @@ Move MiniMax::get_move()
 
 				}
 				this->board->setTile(row, col, PlayerType::EMPTY);
-				
+
 			}
 		}
 	}

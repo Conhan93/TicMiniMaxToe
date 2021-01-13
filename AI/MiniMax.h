@@ -1,9 +1,9 @@
 #ifndef MINI_INCLUDED
 #define MINI_INCLUDED
-#include "board.h"
-#include "engine.h"
-#include "players.h"
-#include "move.h"
+#include "..\board\board.h"
+#include "..\engine\engine.h"
+#include "..\utils\players.h"
+#include "..\utils\move.h"
 
 class MiniMax
 {
@@ -32,4 +32,3 @@ class MiniMax
 };
 
 #endif
-
