@@ -18,14 +18,27 @@ void Interface::display_board() const
 		std::cout << "  ";
 		for (auto col = 0; col < this->board->getSize(); col++)
 		{
-			//if (!(col % this->board->getSize()))
-				//std::cout << std::endl;
-			std::cout << "|" << (int)this->board->getTile(row, col);
+			std::cout << "|" << display_tile(row, col);
 		}
 		std::cout << "|" << std::endl;
 			
 	}
 	std::cout << std::endl << std::endl;
+}
+char Interface::display_tile(int row, int col) const
+{
+	PlayerType tile = this->board->getTile(row, col);
+	switch (tile)
+	{
+	case PlayerType::EMPTY:
+		return ' ';
+	case PlayerType::HUMAN:
+		return 'X';
+	case PlayerType::COMPUTER:
+		return 'O';
+	default:
+		break;
+	}
 }
 bool Interface::make_move()
 {

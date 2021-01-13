@@ -11,6 +11,8 @@ class Interface
 	private:
 		Board* board;
 		Engine* engine;
+
+		char display_tile(int row, int col) const;
 	public:
 		Interface() {};
 		Interface(Board* board, Engine* engine);
