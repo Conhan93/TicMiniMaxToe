@@ -25,11 +25,11 @@ bool Engine::make_move(int row, int col)
 	}
 	return false;
 }
-bool Engine::valid_move(int row, int col)
+bool Engine::valid_move(int row, int col) const
 {
 	return this->board->getTile(row, col) == PlayerType::EMPTY;
 }
-bool Engine::check_win(PlayerType player)
+bool Engine::check_win(PlayerType player) const
 {
 	//this->player = player;
 	return horizontal_check(player) || vertical_check(player) || diagonal_check(player);
@@ -39,7 +39,7 @@ PlayerType Engine::get_player()
 	return this->player;
 	//return this->turn % 2 ? 1 : -1;
 }
-bool Engine::horizontal_check(PlayerType player)
+bool Engine::horizontal_check(PlayerType player) const
 {
 	bool check{ true };
 	// horizontal check
@@ -54,7 +54,7 @@ bool Engine::horizontal_check(PlayerType player)
 	}
 	return false;
 }
-bool Engine::vertical_check(PlayerType player)
+bool Engine::vertical_check(PlayerType player) const
 {
 	// vertical check
 	bool check{ true };
@@ -70,7 +70,7 @@ bool Engine::vertical_check(PlayerType player)
 	}
 	return false;
 }
-bool Engine::diagonal_check(PlayerType player)
+bool Engine::diagonal_check(PlayerType player) const
 {
 	// diag check
 	bool check{ true };
@@ -92,7 +92,7 @@ bool Engine::diagonal_check(PlayerType player)
 	return false;
 }
 
-bool Engine::is_tie()
+bool Engine::is_tie() const
 {
 	bool tie{ true };
 
