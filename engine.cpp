@@ -4,17 +4,11 @@
 Engine::Engine(Board* board)
 {
 	this->board = board;
-	this->turn = 1;
 	this->player = PlayerType::HUMAN;
 }
 void Engine::next_turn()
 {
-	this->turn++;
 	this->player = static_cast<PlayerType>((int)player * -1);
-}
-int Engine::get_turn()
-{
-	return this->turn;
 }
 bool Engine::make_move(int row, int col)
 {
@@ -31,13 +25,11 @@ bool Engine::valid_move(int row, int col) const
 }
 bool Engine::check_win(PlayerType player) const
 {
-	//this->player = player;
 	return horizontal_check(player) || vertical_check(player) || diagonal_check(player);
 }
 PlayerType Engine::get_player()
 {
 	return this->player;
-	//return this->turn % 2 ? 1 : -1;
 }
 bool Engine::horizontal_check(PlayerType player) const
 {

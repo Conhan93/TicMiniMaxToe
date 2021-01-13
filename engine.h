@@ -9,10 +9,7 @@ class Engine
 {
 	private:
 		Board* board;
-		int turn;
 		PlayerType player;
-
-		
 
 		// checks
 		bool horizontal_check(PlayerType player) const;
@@ -28,7 +25,6 @@ class Engine
 		bool make_move(int row, int col);
 		bool check_win(PlayerType player) const;
 
-		int get_turn();
 		bool is_tie() const;
 };
 
