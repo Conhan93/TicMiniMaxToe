@@ -13,8 +13,6 @@ class Board
 
 		Board() {};
 		Board(size_t size);
-	protected:
-		static Board* instance;
 	public:
 		static Board* get_board();
 		static Board* get_board(size_t size);

@@ -27,7 +27,6 @@ Board* Board::get_board()
 
 Board* Board::get_board(size_t size)
 {
-	//static Board* instance = nullptr;
 	if(!board_instance)
 		board_instance = new Board(size);
 	return board_instance;
