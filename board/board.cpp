@@ -11,7 +11,7 @@ Board::Board(size_t size)
 		this->board[row].resize(size);
 }
 size_t Board::getSize() { return this -> board.size(); }
-PlayerType Board::getTile(int row, int col)
+PlayerType Board::getTile(int row,int col) const
 {
 	return this->board[row][col];
 }
