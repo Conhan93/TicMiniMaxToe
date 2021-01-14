@@ -17,8 +17,8 @@ class Engine
 		bool diagonal_check(PlayerType player) const;
 		bool valid_move(int row, int col) const;
 	public:
-		Engine() {};
-		Engine(Board* board);
+		Engine();
+		//Engine(Board* board);
 		PlayerType get_player();
 
 		void next_turn();

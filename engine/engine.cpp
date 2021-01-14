@@ -1,8 +1,9 @@
 #include "engine.h"
 
-Engine::Engine(Board* board)
+//Board* board
+Engine::Engine()
 {
-	this->board = board;
+	this->board = Board::get_board();
 	this->player = PlayerType::HUMAN;
 }
 void Engine::next_turn()

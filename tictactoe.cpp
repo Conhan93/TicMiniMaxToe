@@ -5,10 +5,12 @@
 
 TicTacToe::TicTacToe(int size)
 {
-	this->board = Board(size);
-	this->engine = Engine(&this->board);
-	this->UI = Interface(&this->board,&this->engine);
-	this->AI = MiniMax(&this->board, &this->engine);
+	//this->board = Board(size);
+	this->board = Board::get_board(size);
+	//this->board
+	this->engine = Engine();
+	this->UI = Interface(&this->engine);
+	this->AI = MiniMax(&this->engine);
 
 }
 void TicTacToe::start()
@@ -24,7 +26,8 @@ void TicTacToe::start()
 		if (player == PlayerType::HUMAN)
 		{
 
-			UI.make_move();
+			move = UI.get_move();
+			engine.make_move(move.row, move.col);
 		}
 		else
 		{

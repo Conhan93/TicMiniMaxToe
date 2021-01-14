@@ -3,9 +3,9 @@
 #include "interface.h"
 #include "..\board\board.h"
 
-Interface::Interface(Board* board, Engine* engine)
+Interface::Interface(Engine* engine)
 {
-	this->board = board;
+	this->board = Board::get_board();
 	this->engine = engine;
 }
 
@@ -39,8 +39,9 @@ char Interface::format_tile(int row, int col) const
 		break;
 	}
 }
-bool Interface::make_move()
+Move Interface::get_move()
 {
+	Move move;
 	int row, col;
 	while(true)
 	{
@@ -49,8 +50,11 @@ bool Interface::make_move()
 		std::cout << "\nEnter col:";
 		std::cin >> col;
 
-		if (engine->make_move(row, col)) return true;
+		if (engine->make_move(row, col)) break;
 		else std::cout << std::endl << "Tile occupied!" << std::endl;
 
 	}
+	move.row = row;
+	move.col = col;
+	return move;
 }

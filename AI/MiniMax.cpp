@@ -82,9 +82,9 @@ int MiniMax::evaluate_board()
 	else if (this->engine->is_tie()) return TIE;
 	else return GAME_NOT_FINISHED;
 }
-MiniMax::MiniMax(Board* board, Engine* engine)
+MiniMax::MiniMax(Engine* engine)
 {
-	this->board = board;
+	this->board = Board::get_board();
 	this->engine = engine;
 	this->board_size = board->getSize();
 }

@@ -3,6 +3,7 @@
 
 #include "..\board\board.h"
 #include "..\engine\engine.h"
+#include "..\utils\move.h"
 
 
 
@@ -15,10 +16,10 @@ class Interface
 		char format_tile(int row, int col) const;
 	public:
 		Interface() {};
-		Interface(Board* board, Engine* engine);
+		Interface(Engine* engine);
 
 		void display_board() const;
-		bool make_move();
+		Move get_move();
 };
 
 #endif

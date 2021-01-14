@@ -26,7 +26,7 @@ class MiniMax
 		int evaluate_board();
 	public:
 		MiniMax() {};
-		MiniMax(Board* board, Engine* engine);
+		MiniMax(Engine* engine);
 		Move get_move();
 
 };

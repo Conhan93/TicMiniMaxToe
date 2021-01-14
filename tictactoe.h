@@ -13,7 +13,7 @@ class TicTacToe
 
 	public:
 		MiniMax AI;
-		Board board;
+		Board* board;
 		Interface UI;
 		Engine engine;
 
