@@ -1,6 +1,5 @@
 #include "MiniMax.h"
 #include "..\utils\players.h"
-#include <numeric>
 #include <limits>
 
 
@@ -37,7 +36,7 @@ Move MiniMax::get_move()
 int MiniMax::min_search()
 {
 	int score = std::numeric_limits<int>::min(), board_value;
-	if ((board_value = evaluate_board()) != GAME_NOT_FINISHED) return board_value; // error
+	if ((board_value = evaluate_board()) != GAME_NOT_FINISHED) return board_value;
 
 
 	for (int row = 0; row < this->board_size; row++)
