@@ -6,7 +6,6 @@
 
 
 
-
 Move MiniMax::get_move()
 {
 	int score = std::numeric_limits<int>::min(), temp_score;
@@ -33,9 +32,9 @@ Move MiniMax::get_move()
 	}
 	return move;
 }
-int MiniMax::min_search()
+MiniMax::Score MiniMax::min_search()
 {
-	int score = std::numeric_limits<int>::min(), board_value;
+	Score score = std::numeric_limits<int>::min(), board_value;
 	if ((board_value = evaluate_board()) != GAME_NOT_FINISHED) return board_value;
 
 
@@ -54,9 +53,9 @@ int MiniMax::min_search()
 	}
 	return score;
 }
-int MiniMax::max_search()
+MiniMax::Score MiniMax::max_search()
 {
-	int score = std::numeric_limits<int>::max(), board_value;
+	Score score = std::numeric_limits<int>::max(), board_value;
 	if ((board_value = evaluate_board())  != GAME_NOT_FINISHED) return board_value;
 
 	for (int row = 0; row < this->board_size; row++)

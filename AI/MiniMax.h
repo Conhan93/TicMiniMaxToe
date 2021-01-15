@@ -11,6 +11,7 @@ class MiniMax : public AI
 {
 	private:
 
+		typedef int Score;
 		enum Evaluation
 		{
 			GAME_NOT_FINISHED = -1,
@@ -23,8 +24,8 @@ class MiniMax : public AI
 		Engine* engine;
 		int board_size;
 
-		int min_search();
-		int max_search();
+		Score min_search();
+		Score max_search();
 		Evaluation evaluate_board();
 	public:
 		MiniMax() {};
