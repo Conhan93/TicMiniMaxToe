@@ -2,6 +2,7 @@
 #define BOARD_INCLUDED
 
 #include <vector>
+#include <memory>
 #include "..\utils\players.h"
 
 
@@ -12,10 +13,10 @@ class Board
 
 
 		Board() {};
-		Board(size_t size);
+		Board(int size);
 	public:
-		static Board* get_board() ;
-		static Board* get_board(size_t size);
+		static std::shared_ptr<Board> get_board() ;
+		static std::shared_ptr<Board> get_board(size_t size);
 
 		size_t getSize();
 		PlayerType getTile(int row,int col) const;

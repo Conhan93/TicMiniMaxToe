@@ -4,6 +4,7 @@
 #include "ui\interface.h"
 #include "engine\engine.h"
 #include "AI\MiniMax.h"
+#include <memory>
 
 class TicTacToe
 {
@@ -13,7 +14,7 @@ class TicTacToe
 
 	public:
 		AI* computer;
-		Board* board;
+		std::shared_ptr<Board> board;
 		Interface UI;
 		Engine engine;
 

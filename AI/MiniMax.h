@@ -19,7 +19,7 @@ class MiniMax : public AI
 			TIE = 0,
 		};
 
-		Board* board;
+		std::shared_ptr<Board> board;
 		Engine* engine;
 		int board_size;
 

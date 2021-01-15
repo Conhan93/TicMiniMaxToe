@@ -1,9 +1,9 @@
 #include "board.h"
 
-Board* board_instance = nullptr;
+std::shared_ptr<Board> board_instance = nullptr;
 
 
-Board::Board(size_t size)
+Board::Board(int size)
 {
 	this->board.resize(size);
 
@@ -20,14 +20,14 @@ void Board::setTile(int row, int col, PlayerType value)
 	this->board[row][col] = value;
 }
 
-Board* Board::get_board()
+std::shared_ptr<Board> Board::get_board()
 {
 	return board_instance;
 }
 
-Board* Board::get_board(size_t size)
+std::shared_ptr<Board> Board::get_board(size_t size)
 {
 	if(!board_instance)
-		board_instance = new Board(size);
+		board_instance.reset(new Board(size));
 	return board_instance;
 }

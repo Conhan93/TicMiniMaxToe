@@ -1,6 +1,7 @@
 #ifndef ENGINE_INCLUDED
 #define ENGINE_INCLUDED
 
+#include <memory>
 #include "..\board\board.h"
 #include "..\utils\players.h"
 #include "..\utils\move.h"
@@ -8,7 +9,7 @@
 class Engine
 {
 	private:
-		Board* board;
+		std::shared_ptr<Board> board;
 		PlayerType player;
 
 		// checks
@@ -18,7 +19,7 @@ class Engine
 		bool valid_move(int row, int col) const;
 	public:
 		Engine();
-		//Engine(Board* board);
+
 		PlayerType get_player();
 
 		void next_turn();
