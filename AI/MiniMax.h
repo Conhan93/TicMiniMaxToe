@@ -25,7 +25,7 @@ class MiniMax : public AI
 
 		int min_search();
 		int max_search();
-		int evaluate_board();
+		Evaluation evaluate_board();
 	public:
 		MiniMax() {};
 		MiniMax(Engine* engine);

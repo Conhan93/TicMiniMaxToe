@@ -75,7 +75,7 @@ int MiniMax::max_search()
 	return score;
 
 }
-int MiniMax::evaluate_board()
+MiniMax::Evaluation MiniMax::evaluate_board()
 {
 	if (this->engine->check_win(PlayerType::COMPUTER)) return COMPUTER_WIN;
 	else if (this->engine->check_win(PlayerType::HUMAN)) return HUMAN_WIN;
