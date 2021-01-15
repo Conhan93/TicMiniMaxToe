@@ -1,11 +1,13 @@
 #ifndef MINI_INCLUDED
 #define MINI_INCLUDED
+
+#include "ai.h"
 #include "..\board\board.h"
 #include "..\engine\engine.h"
 #include "..\utils\players.h"
 #include "..\utils\move.h"
 
-class MiniMax
+class MiniMax : public AI
 {
 	private:
 
@@ -27,7 +29,7 @@ class MiniMax
 	public:
 		MiniMax() {};
 		MiniMax(Engine* engine);
-		Move get_move();
+		Move get_move() override;
 
 };
 
