@@ -8,7 +8,7 @@
 
 Move MiniMax::get_move()
 {
-	int score = std::numeric_limits<int>::min(), temp_score;
+	Score score = std::numeric_limits<int>::min(), temp_score;
 	Move move;
 
 	for (int row = 0; row < this->board_size; row++)
